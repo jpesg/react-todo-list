@@ -62,7 +62,7 @@ class App extends Component {
               editItem={this.state.editItem}
             />
             <TodoList
-              item={this.state.items}
+              items={this.state.items}
               clearList={this.clearList}
               handleDelete={this.handleDelete}
               handleEdit={this.handleEdit}
