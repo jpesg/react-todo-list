@@ -6,7 +6,7 @@ import TodoList from "./components/TodoList";
 //showing vs-code github setup
 class App extends Component {
   state = {
-    items: [{ id: 1, title: "wake up" }, { id: 2, title: "breakfast wake up" }],
+    items: [],
     id: uuid(),
     item: "",
     editItem: false
@@ -14,10 +14,28 @@ class App extends Component {
 
   handleChange = e => {
     console.log("handleChange");
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   handleSubmit = e => {
     console.log("handel submit");
+    e.preventDefault();
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item
+    };
+    const updateItems = [...this.state.items, newItem];
+    this.setState(
+      {
+        items: updateItems,
+        title: "",
+        id: uuid(),
+        editItem: false
+      },
+      () => console.log(this.state)
+    );
   };
 
   clearList = () => {

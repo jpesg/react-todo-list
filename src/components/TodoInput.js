@@ -15,6 +15,7 @@ export default class TodoInput extends Component {
             </div>
             <input
               type="text"
+              name="item"
               className="form-control text-capitalize"
               placeholder="add todo item"
               value={item}
