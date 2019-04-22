@@ -30,7 +30,7 @@ class App extends Component {
     this.setState(
       {
         items: updateItems,
-        title: "",
+        item: "",
         id: uuid(),
         editItem: false
       },
@@ -40,13 +40,28 @@ class App extends Component {
 
   clearList = () => {
     console.log("clear list");
+    this.setState({ items: [] });
   };
 
   handleDelete = id => {
     console.log(`hanlde delete ${id}`);
+    const filteredItems = this.state.items.filter(item => item.id !== id);
+    this.setState({
+      items: filteredItems
+    });
   };
   handleEdit = id => {
     console.log(`hanlde edit ${id}`);
+    const filteredItems = this.state.items.filter(item => item.id !== id);
+    const selectedItem = this.state.items.find(item => item.id === id);
+    console.log(selectedItem);
+
+    this.setState({
+      items: filteredItems,
+      item: selectedItem.title,
+      id: selectedItem.id,
+      editItem: true
+    });
   };
 
   render() {
